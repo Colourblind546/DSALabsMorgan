@@ -29,7 +29,28 @@ public sealed class PlayerCollectionTests
     }
 
     [Test]
+    public void FindById_ReturnsFirstMatchingPlayerWhenIdsAreDuplicated()
+    {
+        PlayerCollection collection = CreateCollection();
+
+        Player? player = collection.FindById(101);
+
+        Assert.That(player!.Name, Is.EqualTo("Amina"));
+    }
+
+    [Test]
     public void FindHighestScore_ReturnsPlayerWithHighestScore()
+    {
+        PlayerCollection collection = CreateCollection();
+
+        Player? player = collection.FindHighestScore();
+
+        Assert.That(player, Is.Not.Null);
+        Assert.That(player!.Id, Is.EqualTo(734));
+    }
+
+    [Test]
+    public void FindHighestScore_ReturnsFirstHighestScoreFound()
     {
         PlayerCollection collection = CreateCollection();
 
@@ -74,8 +95,10 @@ public sealed class PlayerCollectionTests
         return new PlayerCollection(new List<Player>
         {
             new Player(101, "Amina", 120),
+            new Player(101, "Alice", 120),
             new Player(205, "Bo", 85),
             new Player(734, "Cleo", 160),
+            new Player(735, "Daisy", 160),
             new Player(910, "Dani", 105)
         });
     }
