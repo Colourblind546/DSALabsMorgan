@@ -29,6 +29,35 @@ namespace DSA.Lab01
                 throw new ArgumentNullException(nameof(sortedValues));
             }
 
+            int low = 0;
+            int high = sortedValues.Length - 1;
+            int middle = (high - low) / 2 + low;
+
+            while(true)
+            {
+                if (target == sortedValues[middle])
+                {
+                    return middle;
+                }
+
+                if (high == low)
+                {
+                    break;
+                }
+
+                if (target > sortedValues[middle])
+                {
+                    low = middle + 1;
+                }
+                else if (target < sortedValues[middle])
+                {
+                    high = middle - 1;
+                }
+
+                middle = (high - low) / 2 + low;
+
+            }
+
             // TODO: Implement binary search.
             // The input to this method is guaranteed to be sorted in ascending order.
             //

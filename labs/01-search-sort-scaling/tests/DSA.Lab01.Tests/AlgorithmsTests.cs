@@ -75,6 +75,16 @@ namespace DSA.Lab01.Tests
 
             Assert.That(result, Is.EqualTo(-1));
         }
+
+        [Test]
+        public void BinarySearch_ReturnsFirstDuplicateFound()
+        {
+            int[] values = { 2, 5, 5, 7, 8, 12, 16, 22, 23, 29, 33 };
+
+            int result = SearchAlgorithms.BinarySearch(values, 5);
+
+            Assert.That(result, Is.EqualTo(2));
+        }
     }
 
     [TestFixture]

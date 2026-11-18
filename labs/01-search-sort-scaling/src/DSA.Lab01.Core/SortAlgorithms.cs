@@ -10,6 +10,37 @@ namespace DSA.Lab01
             {
                 throw new ArgumentNullException(nameof(values));
             }
+            int currentSortValue;
+            if (values != null)
+            {
+                for (int i = 0; i < values.Length; i++)
+                {
+                    currentSortValue = values[i];
+                    int moveIndex = i;
+
+                    while (true)
+                    {
+                        if (moveIndex == 0)
+                        {
+                            break;
+                        }
+                        if (values[moveIndex - 1] <= currentSortValue)
+                        {
+                            break;
+                        }
+                        else if (values[moveIndex - 1] > currentSortValue)
+                        {
+                            values[moveIndex] = values[moveIndex - 1];
+                            moveIndex--;
+                        }
+                    }
+
+                    values[moveIndex] = currentSortValue;
+
+                    Console.WriteLine(string.Join(", ", values));
+                }
+            }
+            
 
             // TODO: Sort the array in ascending order using insertion sort.
             //
