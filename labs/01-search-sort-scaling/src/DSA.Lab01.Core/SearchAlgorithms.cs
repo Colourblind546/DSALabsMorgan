@@ -40,7 +40,7 @@ namespace DSA.Lab01
                     return middle;
                 }
 
-                if (high == low)
+                if (high <= low)
                 {
                     break;
                 }
